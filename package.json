@@ -1,0 +1,22 @@
+{
+  "name": "tree-diagram",
+  "version": "0.0.1",
+  "description": "Library to transform an aligned-text to a tree-style text",
+  "main": "tree-diagram.js",
+  "scripts": {
+    "test": "mocha spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/orangain/tree-diagram.git"
+  },
+  "author": "orangain <orangain@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/orangain/tree-diagram/issues"
+  },
+  "homepage": "https://github.com/orangain/tree-diagram",
+  "devDependencies": {
+    "mocha": ">=1.17.1"
+  }
+}
