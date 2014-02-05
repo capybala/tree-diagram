@@ -16,7 +16,7 @@ var TreeDiagram = {
     for (i = 0; i < lines.length; i++) {
       var line = lines[i];
 
-      var match = line.match(/^(\t*)(.*)$/);
+      var match = line.match(/^([ \t　]*)(.*)$/);
       var tabs = match[1];
       var text = match[2];
       var indent = text === '' ? 0 : tabs.length;

@@ -22,13 +22,17 @@ describe('tab_text_to_tree', function() {
         'text': 'りんご',
         'children': [{
           'text': 'みかん',
-          'children': []
+          'children': [{
+            'text': 'いちご',
+            'children': []
+          }]
         }]
       }]
     },
     TreeDiagram.parseIndentText(
       'りんご\n' +
-      '\tみかん'
+      '\tみかん\n' +
+      '\t  いちご'
     ));
   });
 
@@ -70,7 +74,7 @@ describe('tab_text_to_tree', function() {
     },
     TreeDiagram.parseIndentText(
       'りんご\n' +
-      '\tいちご\n' +
+      '　いちご\n' +
       'みかん'
     ));
   });
