@@ -7,7 +7,12 @@ var TreeDiagram = require('../tree-diagram.js').TreeDiagram;
 describe('TreeDiagram', function() {
   describe('#parseIndentText', function() {
     it('should parse simple indent', function() {
-      assert.deepEqual({
+      assert.deepEqual(TreeDiagram.parseIndentText(
+        'りんご\n' +
+        '\tみかん\n' +
+        '\t  いちご'
+      ),
+      {
         'children': [{
           'text': 'りんご',
           'children': [{
@@ -18,16 +23,16 @@ describe('TreeDiagram', function() {
             }]
           }]
         }]
-      },
-      TreeDiagram.parseIndentText(
-        'りんご\n' +
-        '\tみかん\n' +
-        '\t  いちご'
-      ));
+      });
     });
 
     it('should parse same indent', function() {
-      assert.deepEqual({
+      assert.deepEqual(TreeDiagram.parseIndentText(
+        'りんご\n' +
+        'いちご\n' +
+        'みかん'
+      ),
+      {
         'children': [{
           'text': 'りんご',
           'children': []
@@ -40,16 +45,16 @@ describe('TreeDiagram', function() {
           'text': 'みかん',
           'children': []
         }]
-      },
-      TreeDiagram.parseIndentText(
-        'りんご\n' +
-        'いちご\n' +
-        'みかん'
-      ));
+      });
     });
 
     it('should parse de-indent', function() {
-      assert.deepEqual({
+      assert.deepEqual(TreeDiagram.parseIndentText(
+        'りんご\n' +
+        '　いちご\n' +
+        'みかん'
+      ),
+      {
         'children': [{
           'text': 'りんご',
           'children': [{
@@ -61,12 +66,7 @@ describe('TreeDiagram', function() {
           'text': 'みかん',
           'children': []
         }]
-      },
-      TreeDiagram.parseIndentText(
-        'りんご\n' +
-        '　いちご\n' +
-        'みかん'
-      ));
+      });
     });
   });
 
