@@ -2,9 +2,9 @@
 
 var TreeDiagram = {
 
-  indentTextToTreeText: function(indentText, stripRootEdges) {
+  indentTextToTreeText: function(indentText) {
     var tree = TreeDiagram.parseIndentText(indentText);
-    var treeText = TreeDiagram.toTreeText(tree, stripRootEdges);
+    var treeText = TreeDiagram.toTreeText(tree);
     return treeText;
   },
 
@@ -43,8 +43,9 @@ var TreeDiagram = {
     return tree;
   },
 
-  toTreeText: function(tree, stripRootEdges) {
+  toTreeText: function(tree) {
     var treeTextLines = [];
+    var stripRootEdges = tree.children.length <= 1;
 
     var nodeToTreeText = function(node, prefix) {
       for (var i = 0; i < node.children.length; i++) {

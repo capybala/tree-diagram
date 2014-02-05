@@ -71,26 +71,6 @@ describe('TreeDiagram', function() {
   });
 
   describe('#toTreeText', function() {
-    it('should stringify simple tree', function() {
-      assert.equal(
-        TreeDiagram.toTreeText({
-          'children': [{
-            'text': 'りんご',
-            'children': [{
-              'text': 'みかん',
-              'children': [{
-                'text': 'いちご',
-                'children': []
-              }]
-            }]
-          }]
-        }),
-        '└─りんご\n' +
-        '　　└─みかん\n' +
-        '　　　　└─いちご'
-      );
-    });
-
     it('should stringify simple tree without root edge', function() {
       assert.equal(
         TreeDiagram.toTreeText({
@@ -104,7 +84,7 @@ describe('TreeDiagram', function() {
               }]
             }]
           }]
-        }, true),
+        }),
         'りんご\n' +
         '└─みかん\n' +
         '　　└─いちご'
