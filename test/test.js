@@ -16,7 +16,7 @@ describe('Array', function() {
 });
 
 describe('tab_text_to_tree', function() {
-  it('should parse simple text', function() {
+  it('should parse simple indent', function() {
     assert.deepEqual({
       'children': [{
         'text': 'りんご',
@@ -29,6 +29,49 @@ describe('tab_text_to_tree', function() {
     TreeDiagram.parseIndentText(
       'りんご\n' +
       '\tみかん'
+    ));
+  });
+
+  it('should parse same indent', function() {
+    assert.deepEqual({
+      'children': [{
+        'text': 'りんご',
+        'children': []
+      },
+      {
+        'text': 'いちご',
+        'children': []
+      },
+      {
+        'text': 'みかん',
+        'children': []
+      }]
+    },
+    TreeDiagram.parseIndentText(
+      'りんご\n' +
+      'いちご\n' +
+      'みかん'
+    ));
+  });
+
+  it('should parse de-indent', function() {
+    assert.deepEqual({
+      'children': [{
+        'text': 'りんご',
+        'children': [{
+          'text': 'いちご',
+          'children': []
+        }]
+      },
+      {
+        'text': 'みかん',
+        'children': []
+      }]
+    },
+    TreeDiagram.parseIndentText(
+      'りんご\n' +
+      '\tいちご\n' +
+      'みかん'
     ));
   });
 });

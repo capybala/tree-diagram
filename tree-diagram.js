@@ -29,13 +29,14 @@ var TreeDiagram = {
 
     for (i = 0; i < lines.length; i++) {
       var item = items[i];
-      var parent = stack[stack.length - 1];
+      var parent = stack.pop();
       while (parent.indent >= item.indent) {
         parent = stack.pop();
       }
 
       var node = {'text': item.text, 'children': []};
       parent.node.children.push(node);
+      stack.push(parent);
       stack.push({'node': node, 'indent': item.indent});
     }
 
