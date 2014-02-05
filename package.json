@@ -4,7 +4,7 @@
   "description": "Library to transform an aligned-text to a tree-style text",
   "main": "tree-diagram.js",
   "scripts": {
-    "test": "mocha spec"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
