@@ -1,9 +1,13 @@
 (function($) {
 
+  var prevText = null;
   var convert = function() {
-    destTextarea.val(
-      TreeDiagram.indentTextToTreeText(srcTextarea.val())
-    );
+    var text = srcTextarea.val().replace(/^[\s　]+/, '').replace(/[\s　]+$/, '');
+    if (text === prevText) {
+      return;
+    }
+    destTextarea.val(TreeDiagram.indentTextToTreeText(text));
+    prevText = text;
   };
 
   var srcTextarea = $('#src_text');
