@@ -1,3 +1,7 @@
+body{
+	background: #5bc2ce;
+}
+
 #src_text {
 	box-sizing: border-box;
 	width: 100%;
