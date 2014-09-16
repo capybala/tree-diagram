@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/orangain/tree-diagram.git"
+    "url": "git://github.com/capybala/tree-diagram.git"
   },
   "author": "orangain <orangain@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/orangain/tree-diagram/issues"
+    "url": "https://github.com/capybala/tree-diagram/issues"
   },
-  "homepage": "https://github.com/orangain/tree-diagram",
+  "homepage": "https://github.com/capybala/tree-diagram",
   "devDependencies": {
     "mocha": ">=1.17.1"
   }
