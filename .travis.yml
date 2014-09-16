@@ -11,3 +11,5 @@ deploy:
   bucket: tree.capybala.com
   region: ap-northeast-1
   endpoint: s3-ap-northeast-1.amazonaws.com
+  on:
+    node: "0.10"
