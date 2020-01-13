@@ -39,8 +39,8 @@
   var srcTextarea = $("#src_text");
   var destTextarea = $("#dest_text");
 
-  srcTextarea.keyup(convert);
-  srcTextarea.keydown(function(e) {
+  srcTextarea.on("keyup", convert);
+  srcTextarea.on("keydown", function(e) {
     if (e.which == 9) {
       // Tab
       onTab($(this), e);
@@ -50,8 +50,8 @@
     }
   });
 
-  destTextarea.focus(function() {
-    $(this).select();
+  destTextarea.on("focus", function() {
+    $(this).trigger("select");
     // for Chrome, see: http://stackoverflow.com/questions/5797539/jquery-select-all-text-from-a-textarea
     $(this).one("mouseup", function(e) {
       e.preventDefault();
