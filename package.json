@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/capybala/tree-diagram",
   "devDependencies": {
-    "mocha": ">=1.17.1"
+    "mocha": "~7.0.0"
   }
 }
