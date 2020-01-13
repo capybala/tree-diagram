@@ -1,0 +1,145 @@
+body{
+  margin:0;
+  padding:0;
+  background: #5bc2ce;
+  color: #ffffff;
+}
+
+
+
+/* ヘッダー */
+
+header{
+  background: #5bc2ce;
+  margin: 0;
+  padding: 5px 0;
+  width: 100%;
+  height: 92px;
+  text-align: center;
+}
+
+header #tit{
+  margin: 30px 0 0;
+  padding: 0;
+  font-size: 150%;
+  text-shadow: -1px 0 0 #0071bc;
+}
+
+header #tit .icon-tree{
+  margin-right: 10px;
+  padding: 10px 5px;
+  font-size: 100%;
+  color: #fff;
+  background: #00a99d;
+  border-radius: 50%;
+  box-shadow: 1px 0 1px #00a19d;
+}
+
+header #copy a{
+  color: #ffffff;
+  text-decoration: none;
+  padding: 5px 0;
+}
+
+header #copy a:hover{
+  text-decoration: underline;
+}
+
+/* 右上のリボン */
+.side-corner-tag {
+  position: relative;
+  color: #fff;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.side-corner-tag #copy {
+  display: inline;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  overflow: hidden;
+}
+
+.side-corner-tag #copy span {
+  position: absolute;
+  display: inline-block;
+  right: -35px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2), inset 0px 5px 30px rgba(255,255,255,0.2);
+  text-align: center;
+  text-transform: uppercase;
+  top: 26px;
+  background: #d93131;
+  width: 110px;
+  padding: 7px 20px;
+  border-top: 1px solid #fc6f76;
+  border-bottom: 1px solid #aa2044;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+
+.side-corner-tag #copy:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -17px;
+  right: 69px;
+  z-index: -1;
+  border: 17px solid;
+  border-color: transparent transparent #662121 transparent;
+}
+
+.side-corner-tag #copy:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 74px;
+  z-index: -1;
+  right: -10px;
+  border: 17px solid;
+  border-color: #662121 transparent transparent transparent;
+}
+
+/* コンテンツ */
+#contents{
+  padding: 0 10px 5px;
+}
+
+textarea{
+  padding: 5px 10px;
+  font-size: 90%;
+  border:none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: -2px -2px 1px #999;
+}
+textarea::selection {
+  background-color: #f0009f;
+  color: #ffffff;
+}
+textarea:focus{
+  background: #f5f5dc;
+}
+
+#src_text {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 10px;
+}
+
+#triangle{
+  margin: 0 auto;
+  content: "";
+  width: 0;
+  border: 12px solid transparent;
+  border-top: 12px solid #0071bc;
+}
+
+#dest_text {
+  width: 100%;
+  height: 300px;
+}
