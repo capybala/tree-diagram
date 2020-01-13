@@ -74,10 +74,7 @@ header #copy a:hover{
   padding: 7px 20px;
   border-top: 1px solid #fc6f76;
   border-bottom: 1px solid #aa2044;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .side-corner-tag #copy:before {
