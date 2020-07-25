@@ -1,15 +1,14 @@
-'use strict';
+"use strict";
 
 var TreeDiagram = {
-
-  indentTextToTreeText: function(indentText) {
+  indentTextToTreeText: function (indentText) {
     var tree = TreeDiagram.parseIndentText(indentText);
     var treeText = TreeDiagram.toTreeText(tree);
     return treeText;
   },
 
-  parseIndentText: function(indentText) {
-    var lines = indentText.split('\n');
+  parseIndentText: function (indentText) {
+    var lines = indentText.split("\n");
     var items = [];
     var i;
 
@@ -19,13 +18,13 @@ var TreeDiagram = {
       var match = line.match(/^([ \t　]*)(.*)$/);
       var tabs = match[1];
       var text = match[2];
-      var indent = text === '' ? 0 : tabs.length;
+      var indent = text === "" ? 0 : tabs.length;
 
-      items.push({'indent': indent, 'text': text});
+      items.push({ indent: indent, text: text });
     }
 
-    var tree = {'children': []};
-    var stack = [{'node': tree, 'indent': -1}];
+    var tree = { children: [] };
+    var stack = [{ node: tree, indent: -1 }];
 
     for (i = 0; i < lines.length; i++) {
       var item = items[i];
@@ -34,31 +33,31 @@ var TreeDiagram = {
         parent = stack.pop();
       }
 
-      var node = {'text': item.text, 'children': []};
+      var node = { text: item.text, children: [] };
       parent.node.children.push(node);
       stack.push(parent);
-      stack.push({'node': node, 'indent': item.indent});
+      stack.push({ node: node, indent: item.indent });
     }
 
     return tree;
   },
 
-  toTreeText: function(tree) {
+  toTreeText: function (tree) {
     var treeTextLines = [];
     var stripRootEdges = tree.children.length <= 1;
 
-    var nodeToTreeText = function(node, prefix) {
+    var nodeToTreeText = function (node, prefix) {
       for (var i = 0; i < node.children.length; i++) {
         var child = node.children[i];
 
         var childPrefix;
 
-        if (child.text === '') {
-          childPrefix = prefix + '│　';
+        if (child.text === "") {
+          childPrefix = prefix + "│　";
         } else if (i == node.children.length - 1) {
-          childPrefix = prefix + '└─';
+          childPrefix = prefix + "└─";
         } else {
-          childPrefix = prefix + '├─';
+          childPrefix = prefix + "├─";
         }
 
         if (stripRootEdges) {
@@ -69,24 +68,23 @@ var TreeDiagram = {
         if (child.children.length > 0) {
           var newPrefix;
           if (i == node.children.length - 1) {
-            newPrefix = prefix + '　　';
+            newPrefix = prefix + "　　";
           } else {
-            newPrefix = prefix + '│　';
+            newPrefix = prefix + "│　";
           }
           nodeToTreeText(child, newPrefix);
         }
       }
     };
 
-    nodeToTreeText(tree, '');
+    nodeToTreeText(tree, "");
 
-    return treeTextLines.join('\n');
-  }
-
+    return treeTextLines.join("\n");
+  },
 };
 
-if (typeof module !== 'undefined') {
+if (typeof module !== "undefined") {
   module.exports = {
-    'TreeDiagram': TreeDiagram
+    TreeDiagram: TreeDiagram,
   };
 }
