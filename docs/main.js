@@ -1,7 +1,7 @@
 "use strict";
 
-(function($) {
-  var convert = function() {
+(function ($) {
+  var convert = function () {
     var text = srcTextarea
       .val()
       .replace(/^[\s　]+/, "")
@@ -13,12 +13,12 @@
     prevText = text;
   };
 
-  var onTab = function($textarea, e) {
+  var onTab = function ($textarea, e) {
     $textarea.selection("replace", { text: "\t", caret: "end" });
     e.preventDefault();
   };
 
-  var onEnter = function($textarea, e) {
+  var onEnter = function ($textarea, e) {
     var text = $textarea.val();
     var caretPos = $textarea.selection("getPos").start;
 
@@ -40,7 +40,7 @@
   var destTextarea = $("#dest_text");
 
   srcTextarea.on("keyup", convert);
-  srcTextarea.on("keydown", function(e) {
+  srcTextarea.on("keydown", function (e) {
     if (e.which == 9) {
       // Tab
       onTab($(this), e);
@@ -50,10 +50,10 @@
     }
   });
 
-  destTextarea.on("focus", function() {
+  destTextarea.on("focus", function () {
     $(this).trigger("select");
     // for Chrome, see: http://stackoverflow.com/questions/5797539/jquery-select-all-text-from-a-textarea
-    $(this).one("mouseup", function(e) {
+    $(this).one("mouseup", function (e) {
       e.preventDefault();
     });
   });

@@ -1,15 +1,13 @@
-body{
-  margin:0;
-  padding:0;
+body {
+  margin: 0;
+  padding: 0;
   background: #5bc2ce;
   color: #ffffff;
 }
 
-
-
 /* ヘッダー */
 
-header{
+header {
   background: #5bc2ce;
   margin: 0;
   padding: 5px 0;
@@ -18,14 +16,14 @@ header{
   text-align: center;
 }
 
-header #tit{
+header #tit {
   margin: 30px 0 0;
   padding: 0;
   font-size: 150%;
   text-shadow: -1px 0 0 #0071bc;
 }
 
-header #tit .icon-tree{
+header #tit .icon-tree {
   margin-right: 10px;
   padding: 10px 5px;
   font-size: 100%;
@@ -35,13 +33,13 @@ header #tit .icon-tree{
   box-shadow: 1px 0 1px #00a19d;
 }
 
-header #copy a{
+header #copy a {
   color: #ffffff;
   text-decoration: none;
   padding: 5px 0;
 }
 
-header #copy a:hover{
+header #copy a:hover {
   text-decoration: underline;
 }
 
@@ -65,7 +63,8 @@ header #copy a:hover{
   position: absolute;
   display: inline-block;
   right: -35px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.2), inset 0px 5px 30px rgba(255,255,255,0.2);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2),
+    inset 0px 5px 30px rgba(255, 255, 255, 0.2);
   text-align: center;
   text-transform: uppercase;
   top: 26px;
@@ -102,14 +101,14 @@ header #copy a:hover{
 }
 
 /* コンテンツ */
-#contents{
+#contents {
   padding: 0 10px 5px;
 }
 
-textarea{
+textarea {
   padding: 5px 10px;
   font-size: 90%;
-  border:none;
+  border: none;
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: -2px -2px 1px #999;
@@ -118,7 +117,7 @@ textarea::selection {
   background-color: #f0009f;
   color: #ffffff;
 }
-textarea:focus{
+textarea:focus {
   background: #f5f5dc;
 }
 
@@ -128,7 +127,7 @@ textarea:focus{
   margin-bottom: 10px;
 }
 
-#triangle{
+#triangle {
   margin: 0 auto;
   content: "";
   width: 0;
