@@ -3,17 +3,16 @@ body {
   margin: 0;
   padding: 0;
   background: #333;
-  color: #ffffff;
 }
 
 /* ヘッダー */
 .l-header {
-  padding: 20px 10px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #5bc2ce;
+  background: #efefef;
   margin: 0;
 }
 
@@ -26,14 +25,14 @@ body {
 .l-header__tit {
   margin: 0;
   padding: 0;
-  font-size: 40px;
-  font-family: "Cookie", cursive;
-  text-shadow: -1px 0 3px #21676f;
+  font-size: 30px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 300;
 }
 
 @media screen and (max-width: 648px) {
   .l-header__tit {
-    margin-left: -1em;
+    margin-right: 20px;
     margin-bottom: 10px;
     font-size: 24px;
   }
@@ -42,7 +41,6 @@ body {
 .l-header__tit .uil-trees {
   margin-right: 10px;
   font-size: 30px;
-  color: #fff;
 }
 
 @media screen and (max-width: 648px) {
@@ -59,33 +57,37 @@ body {
 
 .l-header .c-copyrights a {
   display: inline-block;
-  color: #2d8b96;
+  color: #707070;
   text-decoration: none;
   padding: 15px 10px;
-  background: #5bc2ce;
+  background: #efefef;
   border-radius: 5px;
-  box-shadow: 6px 6px 8px #53b1bb, -6px -6px 8px #63d3e1;
+  box-shadow: 3px 3px 8px white, -3px -3px 8px #bcbcbc;
   font-size: 14px;
 }
 
 .l-header .c-copyrights a:hover {
-  background: #339daa;
+  background: #8f44f2;
   transition: 0.5s ease-in-out;
-  color: #efefef;
+  box-shadow: 1.2px 1.2px 8px black, -1.2px -1.2px 8px darken #ba8cf7, 20%;
+  color: #fff;
 }
 
 .l-contents {
   position: relative;
-  padding-top: 3%;
+  padding-top: 5%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-;
+  background: linear-gradient(270deg, #dfe9f3, #3d99be, #df89b5);
+  background-size: 600% 600%;
+  animation: gradient-animation 7s ease infinite;
 }
 
 @media screen and (max-width: 648px) {
   .l-contents {
-    padding-top: 10%;
+    padding: 15% 10px 0;
   }
 }
 
@@ -106,23 +108,41 @@ body {
 }
 
 .l-contents .custom-shape-divider-top-1600586343 .shape-fill {
-  fill: #5bc2ce;
+  fill: #efefef;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .c-textarea {
   position: relative;
   width: 47%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background: #333;
+  box-shadow: 3px 3px 10px rgba(179, 179, 179, 0.2), -3px -3px 10px rgba(26, 26, 26, 0.2);
 }
 
 @media screen and (max-width: 648px) {
   .c-textarea {
     width: 100%;
+    margin-bottom: 10px;
   }
 }
 
 .c-textarea__tit {
   position: sticky;
   top: 0;
+  padding-left: 20px;
   font-size: 18px;
   font-weight: normal;
   color: #666;
@@ -131,17 +151,25 @@ body {
   background: #333;
   min-height: 25px;
   box-sizing: border-box;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.c-textarea__tit--text {
+  margin: 0;
+  padding: 20px;
 }
 
 @media screen and (max-width: 648px) {
   .c-textarea__tit {
-    padding: 0 10px;
+    padding: 20px 20px 20px 10px;
   }
 }
 
 .c-textarea__inner {
   width: 100%;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 230px);
+  max-width: 100%;
   padding: 1em;
   appearance: none;
   color: #ccc;
@@ -159,7 +187,8 @@ body {
 }
 
 .c-textarea__inner::selection {
-  background-color: #a3a3a3;
+  padding: 10px;
+  background-color: #ba8cf7;
   color: #ffffff;
 }
 
@@ -172,34 +201,47 @@ body {
 .c-textarea--dendrogram .c-tit__area {
   position: sticky;
   top: 0;
+  padding-right: 10px;
   display: flex;
   justify-content: space-between;
   background: #333;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.c-textarea--dendrogram .c-textarea__tit {
+  padding-top: 0;
+  padding-bottom: 0;
+  align-items: center;
+  line-height: 1.8;
+}
+
+.c-btn {
+  align-self: center;
 }
 
 .c-btn__inner {
   width: 100px;
   height: 48px;
-  margin-bottom: 10px;
   appearance: none;
   outline: 0;
   border: none;
-  background: #5bc2ce linear-gradient(145deg, #6eeaf8, #489aa4);
-  border-radius: 5px;
+  background: #ba8cf7 linear-gradient(145deg, #6eeaf8, #489aa4);
+  border-radius: 48px;
   box-shadow: 1.2px 1.2px 8px #1f1f1f, -1.2px -1.2px 8px #252525;
-  color: #fff;
-  font-size: 20px;
+  color: #efefef;
+  font-size: 16px;
   font-family: "Courier New", Courier, monospace;
 }
 
 @media screen and (max-width: 648px) {
   .c-btn__inner {
-    margin: 10px 10px 10px 0;
+    margin: 10px 0;
   }
 }
 
 .c-btn__inner:hover {
-  background: #339daa;
+  background: #8f44f2;
   transition: 0.5s ease-in-out;
   color: #efefef;
 }
