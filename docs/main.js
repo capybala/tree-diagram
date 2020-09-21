@@ -1,83 +1,89 @@
 "use strict";
 
-(function ($) {
-  var convert = function () {
-    var text = srcTextarea
-      .val()
+window.addEventListener("DOMContentLoaded", () => {
+  let prevSrcText = null;
+  const srcTextarea = document.querySelector("#src_text");
+  const destTextarea = document.querySelector("#dest_text");
+  const copyButton = document.querySelector("#copy_button");
+
+  const convert = () => {
+    const srcText = srcTextarea.value
       .replace(/^[\s　]+/, "")
       .replace(/[\s　]+$/, "");
-    if (text === prevText) {
+
+    if (srcText === prevSrcText) {
       return;
     }
-    destTextarea.val(TreeDiagram.indentTextToTreeText(text));
-    prevText = text;
+    destTextarea.value = TreeDiagram.indentTextToTreeText(srcText);
+    prevSrcText = srcText;
   };
 
-  var onTab = function ($textarea, e) {
-    $textarea.selection("replace", { text: "\t", caret: "end" });
-    e.preventDefault();
+  const insertText = (textarea, text) => {
+    const value = textarea.value;
+    const selectionStart = textarea.selectionStart;
+    const newValue =
+      value.substring(0, selectionStart) +
+      text +
+      value.substring(textarea.selectionEnd);
+    textarea.value = newValue;
+    const newCaretPos = selectionStart + text.length;
+    textarea.setSelectionRange(newCaretPos, newCaretPos);
   };
 
-  var onEnter = function ($textarea, e) {
-    var text = $textarea.val();
-    var caretPos = $textarea.selection("getPos").start;
+  const onTab = (textarea) => {
+    insertText(textarea, "\t");
+  };
+
+  const onEnter = (textarea) => {
+    const text = textarea.value;
+    const caretPos = textarea.selectionStart;
 
     // When the caret is at the tail of line, text.charAt(caretPos) == '\n'
     // So start finding '\n' from caretPos - 1
     // + 1 returns right index of '\n' when found, or returns 0 when not found
-    var startLinePos = text.lastIndexOf("\n", caretPos - 1) + 1;
-    var line = text.substr(startLinePos, caretPos - startLinePos);
+    const startLinePos = text.lastIndexOf("\n", caretPos - 1) + 1;
+    const line = text.substr(startLinePos, caretPos - startLinePos);
 
-    var match = line.match(/^([ \t　]*)/);
-    var tabs = match[1];
+    const match = line.match(/^([ \t　]*)/);
+    const tabs = match[1];
 
-    $textarea.selection("replace", { text: "\n" + tabs, caret: "end" });
-    e.preventDefault();
+    insertText(textarea, "\n" + tabs);
   };
 
-  var prevText = null;
-  var srcTextarea = $("#src_text");
-  var destTextarea = $("#dest_text");
-  var copyButton = $("#copy_button");
-
-  srcTextarea.on("keyup", convert);
-  srcTextarea.on("keydown", function (e) {
-    if (e.which == 9) {
-      // Tab
-      onTab($(this), e);
-    } else if (e.which == 13) {
+  srcTextarea.addEventListener("keyup", convert);
+  srcTextarea.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") {
+      e.preventDefault();
+      onTab(e.target);
+    } else if (e.keyCode === 13) {
       // Enter
-      onEnter($(this), e);
+      // Use e.keyCode instead of e.key to prevent wrong detemination when using IME (See: https://qiita.com/ledsun/items/31e43a97413dd3c8e38e)
+      e.preventDefault();
+      onEnter(e.target);
     }
   });
 
-  destTextarea.on("focus", function () {
-    $(this).trigger("select");
-    // for Chrome, see: http://stackoverflow.com/questions/5797539/jquery-select-all-text-from-a-textarea
-    $(this).one("mouseup", function (e) {
-      e.preventDefault();
-    });
+  destTextarea.addEventListener("focus", (e) => {
+    e.target.select();
   });
 
-  copyButton.on("click", () => {
-    window.navigator.clipboard.writeText(destTextarea.val());
-    copyButton.text("Copied!");
+  copyButton.addEventListener("click", () => {
+    window.navigator.clipboard.writeText(destTextarea.value);
+    copyButton.textContent = "Copied!";
   });
 
-  copyButton.on("blur", () => {
-    copyButton.text("Copy");
-  });
-  copyButton.on("mouseleave", () => {
-    copyButton.text("Copy");
-  });
+  const resetButtonLabel = () => {
+    copyButton.textContent = "Copy";
+  };
+  copyButton.addEventListener("blur", resetButtonLabel);
+  copyButton.addEventListener("mouseleave", resetButtonLabel);
 
-  srcTextarea.val(
+  srcTextarea.value =
     "テキストエリアに\n" +
-      "\tタブや\n" +
-      "\t\tスペースで\n" +
-      "\t整形したテキストを書くと、\n" +
-      "\t\tDendrogramエリアに\n" +
-      "\t\t樹形図が表示されます。"
-  );
+    "\tタブや\n" +
+    "\t\tスペースで\n" +
+    "\t整形したテキストを書くと、\n" +
+    "\t\tDendrogramエリアに\n" +
+    "\t\t樹形図が表示されます。";
   convert();
-})(jQuery);
+});
