@@ -38,6 +38,7 @@
   var prevText = null;
   var srcTextarea = $("#src_text");
   var destTextarea = $("#dest_text");
+  var copyButton = $("#copy_button");
 
   srcTextarea.on("keyup", convert);
   srcTextarea.on("keydown", function (e) {
@@ -56,6 +57,18 @@
     $(this).one("mouseup", function (e) {
       e.preventDefault();
     });
+  });
+
+  copyButton.on("click", () => {
+    window.navigator.clipboard.writeText(destTextarea.val());
+    copyButton.text("Copied!");
+  });
+
+  copyButton.on("blur", () => {
+    copyButton.text("Copy");
+  });
+  copyButton.on("mouseleave", () => {
+    copyButton.text("Copy");
   });
 
   srcTextarea.val(
