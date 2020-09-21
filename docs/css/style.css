@@ -7,7 +7,7 @@ body {
 
 /* ヘッダー */
 .l-header {
-  padding: 20px;
+  padding: 20px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,28 +25,36 @@ body {
 .l-header__tit {
   margin: 0;
   padding: 0;
-  font-size: 30px;
-  font-family: "Courier New", Courier, monospace;
+  font-size: 24px;
+  font-family: "Comfortaa", cursive;
   font-weight: 300;
 }
 
-@media screen and (max-width: 648px) {
+@media screen and (min-width: 476px) and (max-width: 648px) {
   .l-header__tit {
     margin-right: 20px;
-    margin-bottom: 10px;
-    font-size: 24px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .l-header__tit {
+    margin-right: 20px;
+    margin-bottom: 20px;
   }
 }
 
 .l-header__tit .uil-trees {
-  margin-right: 10px;
-  font-size: 30px;
+  width: 28px;
+  height: 28px;
+  vertical-align: bottom;
 }
 
 @media screen and (max-width: 648px) {
   .l-header__tit .uil-trees {
-    margin-right: 3px;
-    font-size: 18px;
+    margin-right: 0;
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -143,7 +151,7 @@ body {
   position: sticky;
   top: 0;
   padding-left: 20px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: normal;
   color: #666;
   font-family: "Courier New", Courier, monospace;
