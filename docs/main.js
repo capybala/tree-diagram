@@ -78,12 +78,10 @@ window.addEventListener("DOMContentLoaded", () => {
   copyButton.addEventListener("blur", resetButtonLabel);
   copyButton.addEventListener("mouseleave", resetButtonLabel);
 
-  srcTextarea.value =
-    "テキストエリアに\n" +
-    "\tタブや\n" +
-    "\t\tスペースで\n" +
-    "\t整形したテキストを書くと、\n" +
-    "\t\tDendrogramエリアに\n" +
-    "\t\t樹形図が表示されます。";
+  srcTextarea.value = `Text indented with
+\ttabs
+\t\tor spaces
+\twill be converted to
+\t\tthe dendrogram`;
   convert();
 });
