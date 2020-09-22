@@ -176,7 +176,7 @@ body {
 
 .c-textarea__inner {
   width: 100%;
-  height: calc(100vh - 230px);
+  height: calc(100vh - 250px);
   max-width: 100%;
   padding: 1em;
   appearance: none;
