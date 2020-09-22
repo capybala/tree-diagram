@@ -2,34 +2,82 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>タブやスペースで整形したテキストを樹形図に変換するよ</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>
+			Dendrogram | Convert text formatted with tabs and spaces into a dendrogram
+		</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link rel="stylesheet" type="text/css" href="css/fontello.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap"
+			rel="stylesheet"
+		/>
+		<script defer src="tree-diagram.js"></script>
+		<script defer src="main.js"></script>
 	</head>
 
 	<body>
-		<header class="side-corner-tag">
-			<div class="box"></div>
-			<p id="copy">
-				<span
-					>©
-					<a href="https://capybala.com" target="_blank">capybala.com</a></span
+		<header class="side-corner-tag l-header">
+			<h1 class="l-header__tit">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					class="uil-trees"
+				>
+					<path
+						fill="#000"
+						d="M16.5,5A4.86,4.86,0,0,0,14,5.69,6,6,0,0,0,2.5,8v4a6,6,0,0,0,5,5.91V21a1,1,0,0,0,2,0V17.91a6.08,6.08,0,0,0,2.78-1.26A5,5,0,0,0,15.5,18.9V21a1,1,0,0,0,2,0V18.9a5,5,0,0,0,4-4.9V10A5,5,0,0,0,16.5,5Zm-5,5v4a5.23,5.23,0,0,0,.06.57,4,4,0,0,1-2.06,1.3V13a1,1,0,0,0-2,0v2.86A4,4,0,0,1,4.5,12V8a4,4,0,0,1,6.83-2.84,3.94,3.94,0,0,1,1.06,2A5,5,0,0,0,11.5,10Zm8,4a3,3,0,0,1-2,2.82V13a1,1,0,0,0-2,0v3.82a3,3,0,0,1-2-2.82V10a3,3,0,0,1,6,0Z"
+					/>
+				</svg>
+				<span>Dendrogram</span>
+			</h1>
+			<p class="c-copyrights">
+				<a href="https://capybala.com" target="_blank"
+					>Hi! We are &copy;capybala.com</a
 				>
 			</p>
-
-			<h1 id="tit">
-				<i class="icon-tree"></i
-				>タブやスペースで整形したテキストを樹形図に変換するよ
-			</h1>
 		</header>
-		<div id="contents">
-			<textarea id="src_text"></textarea>
-			<div id="triangle"></div>
-			<textarea id="dest_text" readonly></textarea>
+		<div class="l-contents">
+			<div class="custom-shape-divider-top-1600586343">
+				<svg
+					data-name="Layer 1"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 1200 120"
+					preserveAspectRatio="none"
+				>
+					<path
+						d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+						opacity=".25"
+						class="shape-fill"
+					></path>
+					<path
+						d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+						opacity=".5"
+						class="shape-fill"
+					></path>
+					<path
+						d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+						class="shape-fill"
+					></path>
+				</svg>
+			</div>
+			<div class="c-textarea">
+				<h2 class="c-textarea__tit c-textarea__tit--text">Text</h2>
+				<textarea id="src_text" class="c-textarea__inner"></textarea>
+			</div>
+
+			<div class="c-textarea c-textarea--dendrogram">
+				<div class="c-tit__area">
+					<h2 class="c-textarea__tit">Dendrogram</h2>
+					<div class="c-btn">
+						<div class="c-btn__wrapper">
+							<button type="button" id="copy_button" class="c-btn__inner">
+								Copy
+							</button>
+						</div>
+					</div>
+				</div>
+				<textarea id="dest_text" readonly class="c-textarea__inner"></textarea>
+			</div>
 		</div>
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script src="jquery.selection.js"></script>
-		<script src="tree-diagram.js"></script>
-		<script src="main.js"></script>
 	</body>
 </html>

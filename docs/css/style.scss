@@ -1,0 +1,233 @@
+$main-color: #333;
+$sub-color: #ba8cf7;
+$accent-color: #efefef;
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $main-color;
+}
+
+/* ヘッダー */
+
+.l-header {
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: $accent-color;
+  margin: 0;
+  @media screen and (max-width: 648px) {
+    justify-content: center;
+  }
+
+  &__tit {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-family: "Comfortaa", cursive;
+    font-weight: 300;
+
+    @media screen and (min-width: 476px) and (max-width: 648px) {
+      margin-right: 20px;
+      font-size: 22px;
+    }
+    @media screen and (max-width: 475px) {
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+
+    .uil-trees {
+      width: 28px;
+      height: 28px;
+      vertical-align: bottom;
+      @media screen and (max-width: 648px) {
+        margin-right: 0;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+  .c-copyrights {
+    margin: 0;
+    font-family: "Courier New", Courier, monospace;
+    a {
+      display: inline-block;
+      color: darken($accent-color, 50%);
+      text-decoration: none;
+      padding: 15px 10px;
+      background: $accent-color;
+      border-radius: 5px;
+      box-shadow: 3px 3px 8px lighten($accent-color, 20%),
+        -3px -3px 8px darken($accent-color, 20%);
+      font-size: 14px;
+      &:hover {
+        background: darken($sub-color, 15%);
+        transition: 0.5s ease-in-out;
+        box-shadow: 1.2px 1.2px 8px darken($sub-color, 90%),
+          -1.2px -1.2px 8px darken ($sub-color, 20%);
+        color: #fff;
+      }
+    }
+  }
+}
+// 全体
+.l-contents {
+  position: relative;
+  padding-top: 5%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: flex-;
+  background: linear-gradient(270deg, #dfe9f3, #3d99be, #df89b5);
+  background-size: 600% 600%;
+  animation: gradient-animation 7s ease infinite;
+
+  @media screen and (max-width: 648px) {
+    padding: 15% 10px 0;
+  }
+  .custom-shape-divider-top-1600586343 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .custom-shape-divider-top-1600586343 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 35px;
+  }
+
+  .custom-shape-divider-top-1600586343 .shape-fill {
+    fill: #efefef;
+  }
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// テキスト箇所の設定
+.c-textarea {
+  position: relative;
+  width: 47%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background: $main-color;
+  box-shadow: 3px 3px 10px rgba(lighten($main-color, 50%), 0.2),
+    -3px -3px 10px rgba(darken($main-color, 10%), 0.2);
+
+  @media screen and (max-width: 648px) {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  &__tit {
+    position: sticky;
+    top: 0;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #666;
+    font-family: "Courier New", Courier, monospace;
+    text-shadow: -1px 0 0 #000;
+    background: $main-color;
+    min-height: 25px;
+    box-sizing: border-box;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    &--text {
+      margin: 0;
+      padding: 20px;
+    }
+    @media screen and (max-width: 648px) {
+      padding: 20px 20px 20px 10px;
+    }
+  }
+  &__inner {
+    width: 100%;
+    height: calc(100vh - 230px);
+    max-width: 100%;
+    @media screen and (max-width: 648px) {
+      height: 30vh;
+    }
+    padding: 1em;
+    appearance: none;
+    color: #ccc;
+    box-sizing: border-box;
+    line-height: 1.8;
+    background: $main-color;
+    border: none;
+    box-shadow: inset 9.91px 9.91px 15px #2e2e2e,
+      inset -9.91px -9.91px 15px #383838;
+
+    &::selection {
+      padding: 10px;
+      background-color: $sub-color;
+      color: #ffffff;
+    }
+    &:focus {
+      background: #222;
+      box-shadow: inset 1.2px 1.2px 8px #191919, inset -1.2px -1.2px 8px #2b2b2b;
+      outline: 0;
+    }
+  }
+  &--dendrogram {
+    .c-tit__area {
+      position: sticky;
+      top: 0;
+      padding-right: 10px;
+      display: flex;
+      justify-content: space-between;
+      background: $main-color;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    .c-textarea__tit {
+      padding-top: 0;
+      padding-bottom: 0;
+      align-items: center;
+      line-height: 1.8;
+    }
+  }
+}
+
+// ボタン
+.c-btn {
+  align-self: center;
+  &__inner {
+    width: 100px;
+    height: 48px;
+    appearance: none;
+    outline: 0;
+    border: none;
+    background: $sub-color linear-gradient(145deg, #6eeaf8, #489aa4);
+    border-radius: 48px;
+    box-shadow: 1.2px 1.2px 8px #1f1f1f, -1.2px -1.2px 8px #252525;
+    color: #efefef;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    @media screen and (max-width: 648px) {
+      margin: 10px 0;
+    }
+    &:hover {
+      background: darken($sub-color, 15%);
+      transition: 0.5s ease-in-out;
+      color: #efefef;
+    }
+  }
+}
